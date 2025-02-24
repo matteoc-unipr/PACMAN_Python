@@ -409,7 +409,7 @@ class Boardgame():
         for i in self._arena.draw_big_cookies():
             BigCookies(self._arena, i)
         self._PacMan = PacMan(self._arena, (112, 184))
-        #self._PurpleGhost = Ghost(self._arena, (208, 232), 1)         #purple = 1          #IL FANTASMA ROSA CONTINUA A RESPAWNARE FINO AL TERMINE DEI SUPERPOTERI
+        self._PurpleGhost = Ghost(self._arena, (208, 232), 1)         #purple = 1          
         self._RedGhost = Ghost(self._arena, (8, 232), 0)              #red = 0
         self._BlueGhost = Ghost(self._arena, (208, 8), 2)             #blue = 2
         self._YellowGhost = Ghost(self._arena, (8, 8), 3)             #yellow = 3
@@ -421,13 +421,13 @@ class Boardgame():
     def superpower(self):
         if self._PacMan.sup_count() == True:
             self._RedGhost.blue_ghost()              
-            #self._PurpleGhost.blue_ghost()         
+            self._PurpleGhost.blue_ghost()         
             self._BlueGhost.blue_ghost()            
             self._YellowGhost.blue_ghost()
            
-            #if self._PurpleGhost.superpower() == True:
-            #    self._PurpleGhost.remove_ghost()
-            #    self.PurpleGhost = Ghost(self._arena, (112, 88), 1) 
+            if self._PurpleGhost.superpower() == True:
+                self._PurpleGhost.remove_ghost()
+                self._PurpleGhost = Ghost(self._arena, (112, 88), 1) 
             if self._YellowGhost.superpower() == True:
                 self._YellowGhost.remove_ghost() 
                 self._YellowGhost = Ghost(self._arena, (112, 88), 3)           
@@ -441,7 +441,7 @@ class Boardgame():
         
         else:
             self._RedGhost.not_blue_ghost()              
-            #self._PurpleGhost.not_blue_ghost()         
+            self._PurpleGhost.not_blue_ghost()         
             self._BlueGhost.not_blue_ghost()            
             self._YellowGhost.not_blue_ghost()                 
         
